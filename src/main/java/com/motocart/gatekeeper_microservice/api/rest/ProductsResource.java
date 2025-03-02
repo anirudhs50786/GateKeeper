@@ -1,10 +1,10 @@
 package com.motocart.gatekeeper_microservice.api.rest;
 
 import com.motocart.gatekeeper_microservice.dto.ProductsDTO;
+import org.springframework.http.ResponseEntity;
 
 public interface ProductsResource {
-    ProductsDTO createProduct(ProductsDTO product);
+    ResponseEntity<String> createProduct(ProductsDTO product);
 
-    ProductsDTO updateProduct(ProductsDTO product);
-
+    ResponseEntity<String> updateProduct(ProductsDTO product);
 }

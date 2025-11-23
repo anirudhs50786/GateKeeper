@@ -5,7 +5,8 @@ import lombok.Data;
 import java.io.Serializable;
 
 @Data
-public class ProductsDTO implements Serializable {
+public class ProductDTO implements Serializable {
+    private int id;
     private String name;
     private String productCode;
     private String firmName;

@@ -5,7 +5,7 @@ server:
 
 spring:
   application:
-    name: gatekeeper-microservice
+    name: gatekeeper-server
   profiles:
     active: dev
 

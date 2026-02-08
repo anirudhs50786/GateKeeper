@@ -129,7 +129,7 @@ public class ProductsResourceImpl implements ProductsResource {
         }
     }
 
-    @GetMapping
+    @GetMapping("/{productId}")
     @Operation(description = "Fetches the product for the product id")
     @ApiResponses({
             @ApiResponse(responseCode = "200", description = "Product successfully retrieved for the product id"),
@@ -137,7 +137,7 @@ public class ProductsResourceImpl implements ProductsResource {
             @ApiResponse(responseCode = "500", description = "Failed to fetch the product for the product id")
     })
     @Override
-    public ResponseEntity<ProductDTO> getProduct(@RequestParam int productId) {
+    public ResponseEntity<ProductDTO> getProduct(@PathVariable int productId) {
         ProductDTO productDTO = null;
         if(productId == 0) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);

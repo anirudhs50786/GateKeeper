@@ -3,14 +3,16 @@ package com.motocart.gatekeeper_microservice.service.impl;
 import com.motocart.gatekeeper_microservice.dto.ProductDTO;
 import com.motocart.gatekeeper_microservice.integration.ProductsServiceClient;
 import com.motocart.gatekeeper_microservice.service.ProductsService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class ProductsServiceImpl implements ProductsService {
 
-    @Autowired
-    private ProductsServiceClient productsServiceClient;
+    private final ProductsServiceClient productsServiceClient;
+
+    public ProductsServiceImpl(ProductsServiceClient productsServiceClient) {
+        this.productsServiceClient = productsServiceClient;
+    }
 
     @Override
     public String createProduct(ProductDTO productDTO) {

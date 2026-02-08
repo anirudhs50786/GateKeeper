@@ -15,4 +15,14 @@ public interface ProductsServiceClient {
     @PutMapping("/closedcart/api/products")
     String updateProduct(@RequestBody ProductDTO product);
 
+//    String createCategory(String categoryName);
+//
+//    String updateCategory(int categoryId, String categoryName);
+//
+//    String deleteCategory(int categoryId);
+//
+//    List<String> getCategories();
+//
+//    String getCategory(int categoryId);
+
 }

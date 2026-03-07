@@ -1,6 +1,6 @@
-package com.motocart.gatekeeper_microservice.api.rest.impl;
+package com.motocart.gatekeeper_microservice.api.impl;
 
-import com.motocart.gatekeeper_microservice.api.rest.ProductsResource;
+import com.motocart.gatekeeper_microservice.api.ProductsResource;
 import com.motocart.gatekeeper_microservice.dto.ProductDTO;
 import com.motocart.gatekeeper_microservice.service.ProductsService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -36,14 +36,13 @@ public class ProductsResourceImpl implements ProductsResource {
     })
     @Override
     public ResponseEntity<String> createProduct(@RequestBody ProductDTO product) {
-        if(product == null) {
+        if (product == null) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("No Product data supplied");
         }
         try {
             String responseMessage = productsService.createProduct(product);
             return ResponseEntity.status(HttpStatus.OK).body(responseMessage);
-        }
-        catch (Exception exception) {
+        } catch (Exception exception) {
             log.error("Error while creating the product. {}", exception.getMessage());
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Product create request failed");
         }
@@ -58,7 +57,7 @@ public class ProductsResourceImpl implements ProductsResource {
     })
     @Override
     public ResponseEntity<String> updateProduct(@RequestBody ProductDTO product) {
-        if(product == null) {
+        if (product == null) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("No Product data supplied");
         }
         try {
@@ -79,7 +78,7 @@ public class ProductsResourceImpl implements ProductsResource {
     })
     @Override
     public ResponseEntity<String> deleteProduct(@RequestParam int productId) {
-        if(productId == 0) {
+        if (productId == 0) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Provide a valid product");
         }
         try {
@@ -99,13 +98,12 @@ public class ProductsResourceImpl implements ProductsResource {
     })
     @Override
     public ResponseEntity<String> bulkCreateProducts(@RequestBody List<ProductDTO> products) {
-        if(products == null) {
+        if (products == null) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("No Product data supplied");
         }
         try {
             return ResponseEntity.status(HttpStatus.OK).body("Bulk Products create request success");
-        }
-        catch (Exception exception) {
+        } catch (Exception exception) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Bulk Products create request failed");
         }
     }
@@ -119,7 +117,7 @@ public class ProductsResourceImpl implements ProductsResource {
     })
     @Override
     public ResponseEntity<String> bulkUpdateProduct(@RequestBody List<ProductDTO> products) {
-        if(products == null) {
+        if (products == null) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("No Product data supplied");
         }
         try {
@@ -139,13 +137,12 @@ public class ProductsResourceImpl implements ProductsResource {
     @Override
     public ResponseEntity<ProductDTO> getProduct(@PathVariable int productId) {
         ProductDTO productDTO = null;
-        if(productId == 0) {
+        if (productId == 0) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
         }
         try {
             return ResponseEntity.status(HttpStatus.OK).body(productDTO);
-        }
-        catch (Exception exception) {
+        } catch (Exception exception) {
             log.error("Error while fetching the product. {}", exception.getMessage());
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(productDTO);
         }
@@ -161,15 +158,36 @@ public class ProductsResourceImpl implements ProductsResource {
     @Override
     public ResponseEntity<List<ProductDTO>> getProducts(@RequestParam int categoryId) {
         List<ProductDTO> productDTO = new ArrayList<>();
-        if(categoryId == 0) {
+        if (categoryId == 0) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
         }
         try {
             return ResponseEntity.status(HttpStatus.OK).body(productDTO);
-        }
-        catch (Exception exception) {
-            log.error("Error while fetching the product list. {}", exception.getMessage());
+        } catch (Exception exception) {
+            log.error("Error while fetching the product list by category. {}", exception.getMessage());
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(productDTO);
+        }
+    }
+
+    @GetMapping("/{productName}")
+    @Operation(description = "Fetches the list of product for the category id")
+    @ApiResponses({
+            @ApiResponse(responseCode = "200", description = "Product list successfully retrieved for the category id"),
+            @ApiResponse(responseCode = "400", description = "Bad request provided"),
+            @ApiResponse(responseCode = "500", description = "Failed to fetch the product list for the category id")
+    })
+    @Override
+    public ResponseEntity<List<ProductDTO>> getProductsByName(@PathVariable String productName) {
+        List<ProductDTO> productDtoList = new ArrayList<>();
+        if (productName == null) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+        }
+        try {
+            productDtoList.addAll(productsService.getProductByName(productName));
+            return ResponseEntity.status(HttpStatus.OK).body(productDtoList);
+        } catch (Exception exception) {
+            log.error("Error while fetching the product list. {}", exception.getMessage());
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(productDtoList);
         }
     }
 }

@@ -5,6 +5,8 @@ import com.motocart.gatekeeper_microservice.integration.ProductsServiceClient;
 import com.motocart.gatekeeper_microservice.service.ProductsService;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ProductsServiceImpl implements ProductsService {
 
@@ -22,5 +24,10 @@ public class ProductsServiceImpl implements ProductsService {
     @Override
     public String updateProduct(ProductDTO productDTO) {
         return productsServiceClient.updateProduct(productDTO);
+    }
+
+    @Override
+    public List<ProductDTO> getProductByName(String productName) {
+        return productsServiceClient.getProductByName(productName);
     }
 }

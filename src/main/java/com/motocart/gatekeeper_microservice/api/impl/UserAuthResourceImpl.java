@@ -1,6 +1,6 @@
-package com.motocart.gatekeeper_microservice.api.rest.impl;
+package com.motocart.gatekeeper_microservice.api.impl;
 
-import com.motocart.gatekeeper_microservice.api.rest.UserAuthResource;
+import com.motocart.gatekeeper_microservice.api.UserAuthResource;
 import com.motocart.gatekeeper_microservice.dto.RegistrationDTO;
 import com.motocart.gatekeeper_microservice.dto.UserDTO;
 import com.motocart.gatekeeper_microservice.service.UserAuthService;

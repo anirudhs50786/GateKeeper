@@ -6,10 +6,11 @@ import java.io.Serializable;
 
 @Data
 public class ProductDTO implements Serializable {
-    private int id;
-    private String name;
+    private int productId;
+    private String productName;
     private String productCode;
     private String firmName;
-    private String description;
-    private Long price;
+    private String productDescription;
+    private Long productPrice;
+    private String imageUrl;
 }

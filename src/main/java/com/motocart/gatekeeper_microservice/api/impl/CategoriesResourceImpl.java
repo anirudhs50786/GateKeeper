@@ -1,6 +1,6 @@
-package com.motocart.gatekeeper_microservice.api.rest.impl;
+package com.motocart.gatekeeper_microservice.api.impl;
 
-import com.motocart.gatekeeper_microservice.api.rest.CategoriesResource;
+import com.motocart.gatekeeper_microservice.api.CategoriesResource;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;

@@ -1,4 +1,4 @@
-package com.motocart.gatekeeper_microservice.api.rest;
+package com.motocart.gatekeeper_microservice.api;
 
 import com.motocart.gatekeeper_microservice.dto.ProductDTO;
 import org.springframework.http.ResponseEntity;
@@ -20,4 +20,6 @@ public interface ProductsResource {
     ResponseEntity<ProductDTO> getProduct(int productId);
 
     ResponseEntity<List<ProductDTO>> getProducts(int categoryId);
+
+    ResponseEntity<List<ProductDTO>> getProductsByName(String productName);
 }

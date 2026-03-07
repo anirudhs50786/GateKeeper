@@ -1,4 +1,4 @@
-package com.motocart.gatekeeper_microservice.api.rest;
+package com.motocart.gatekeeper_microservice.api;
 
 import com.motocart.gatekeeper_microservice.dto.RegistrationDTO;
 import com.motocart.gatekeeper_microservice.dto.UserDTO;

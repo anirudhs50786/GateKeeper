@@ -2,18 +2,24 @@ package com.motocart.gatekeeper_microservice.integration;
 
 import com.motocart.gatekeeper_microservice.dto.ProductDTO;
 import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.*;
 
-@FeignClient(name = "products-server")
+import java.util.List;
+
+@FeignClient(name = "products-server", path = "/closedcart/api/products")
 public interface ProductsServiceClient {
 
-    @PostMapping("/closedcart/api/products")
+    @PostMapping
     String createProduct(@RequestBody ProductDTO product);
 
-    @PutMapping("/closedcart/api/products")
+    @PutMapping
     String updateProduct(@RequestBody ProductDTO product);
+
+    @GetMapping("/{productName}")
+    List<ProductDTO> getProductByName(@PathVariable String productName);
+
+//    @GetMapping("/category")
+//    List<ProductDTO> getProductByCategory(@RequestBody );
 
 //    String createCategory(String categoryName);
 //

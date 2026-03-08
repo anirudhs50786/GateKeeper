@@ -11,4 +11,14 @@ public interface ProductsService {
     String updateProduct(ProductDTO productDTO);
 
     List<ProductDTO> getProductByName(String productName);
+
+    String deleteProduct(int productId);
+
+    String bulkCreateProducts(List<ProductDTO> products);
+
+    String bulkUpdateProduct(List<ProductDTO> products);
+
+    ProductDTO getProduct(int productId);
+
+    List<ProductDTO> getProducts(int categoryId);
 }

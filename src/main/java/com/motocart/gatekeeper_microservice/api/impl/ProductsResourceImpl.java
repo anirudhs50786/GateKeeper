@@ -82,7 +82,8 @@ public class ProductsResourceImpl implements ProductsResource {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Provide a valid product");
         }
         try {
-            return ResponseEntity.status(HttpStatus.OK).body("Update product event published");
+            String responseMessage = productsService.deleteProduct(productId);
+            return ResponseEntity.status(HttpStatus.OK).body(responseMessage);
         } catch (Exception exception) {
             log.error("Error while deleting the product. {}", exception.getMessage());
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Updating the product failed");
@@ -102,7 +103,8 @@ public class ProductsResourceImpl implements ProductsResource {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("No Product data supplied");
         }
         try {
-            return ResponseEntity.status(HttpStatus.OK).body("Bulk Products create request success");
+            String responseMessage = productsService.bulkCreateProducts(products);
+            return ResponseEntity.status(HttpStatus.OK).body(responseMessage);
         } catch (Exception exception) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Bulk Products create request failed");
         }
@@ -121,7 +123,8 @@ public class ProductsResourceImpl implements ProductsResource {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("No Product data supplied");
         }
         try {
-            return ResponseEntity.status(HttpStatus.OK).body("Update product event published");
+            String responseMessage = productsService.bulkUpdateProduct(products);
+            return ResponseEntity.status(HttpStatus.OK).body(responseMessage);
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Updating the product failed");
         }
@@ -141,6 +144,7 @@ public class ProductsResourceImpl implements ProductsResource {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
         }
         try {
+            productDTO = productsService.getProduct(productId);
             return ResponseEntity.status(HttpStatus.OK).body(productDTO);
         } catch (Exception exception) {
             log.error("Error while fetching the product. {}", exception.getMessage());
@@ -162,6 +166,7 @@ public class ProductsResourceImpl implements ProductsResource {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
         }
         try {
+            productDTO = productsService.getProducts(categoryId);
             return ResponseEntity.status(HttpStatus.OK).body(productDTO);
         } catch (Exception exception) {
             log.error("Error while fetching the product list by category. {}", exception.getMessage());

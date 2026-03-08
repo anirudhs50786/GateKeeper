@@ -5,6 +5,7 @@ import com.motocart.gatekeeper_microservice.integration.ProductsServiceClient;
 import com.motocart.gatekeeper_microservice.service.ProductsService;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -29,5 +30,35 @@ public class ProductsServiceImpl implements ProductsService {
     @Override
     public List<ProductDTO> getProductByName(String productName) {
         return productsServiceClient.getProductByName(productName);
+    }
+
+    @Override
+    public String deleteProduct(int productId) {
+        // TODO: Add Feign client method and implement
+        return "Delete product event published";
+    }
+
+    @Override
+    public String bulkCreateProducts(List<ProductDTO> products) {
+        // TODO: Add Feign client method and implement
+        return "Bulk Products create request success";
+    }
+
+    @Override
+    public String bulkUpdateProduct(List<ProductDTO> products) {
+        // TODO: Add Feign client method and implement
+        return "Update product event published";
+    }
+
+    @Override
+    public ProductDTO getProduct(int productId) {
+        // TODO: Add Feign client method and implement
+        return null;
+    }
+
+    @Override
+    public List<ProductDTO> getProducts(int categoryId) {
+        // TODO: Add Feign client method and implement
+        return new ArrayList<>();
     }
 }

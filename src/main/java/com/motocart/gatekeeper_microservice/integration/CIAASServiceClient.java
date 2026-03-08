@@ -6,8 +6,8 @@ import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
-@FeignClient(name = "ciaas-server")
+@FeignClient(name = "ciaas-server", path = "/closedcart/api/auth")
 public interface CIAASServiceClient {
-    @PostMapping("/closedcart/api/auth/register")
+    @PostMapping("/register")
     UserDTO registerUser(@RequestBody RegistrationDTO registrationDTO);
 }

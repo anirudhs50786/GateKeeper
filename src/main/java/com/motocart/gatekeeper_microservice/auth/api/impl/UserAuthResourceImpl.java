@@ -1,9 +1,9 @@
-package com.motocart.gatekeeper_microservice.api.impl;
+package com.motocart.gatekeeper_microservice.auth.api.impl;
 
-import com.motocart.gatekeeper_microservice.api.UserAuthResource;
-import com.motocart.gatekeeper_microservice.dto.RegistrationDTO;
-import com.motocart.gatekeeper_microservice.dto.UserDTO;
-import com.motocart.gatekeeper_microservice.service.UserAuthService;
+import com.motocart.gatekeeper_microservice.auth.api.UserAuthResource;
+import com.motocart.gatekeeper_microservice.auth.service.UserAuthService;
+import com.motocart.library.common.dto.request.SignUpRequestDTO;
+import com.motocart.library.common.dto.response.SignUpResponseDTO;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,7 +21,7 @@ public class UserAuthResourceImpl implements UserAuthResource {
     }
 
     @PostMapping("/register")
-    public UserDTO registerUser(@RequestBody RegistrationDTO registrationDTO) {
+    public SignUpResponseDTO registerUser(@RequestBody SignUpRequestDTO registrationDTO) {
         return userAuthService.registerUser(registrationDTO);
     }
 }

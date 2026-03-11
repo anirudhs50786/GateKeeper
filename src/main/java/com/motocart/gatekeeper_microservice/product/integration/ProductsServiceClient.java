@@ -1,6 +1,6 @@
-package com.motocart.gatekeeper_microservice.integration;
+package com.motocart.gatekeeper_microservice.product.integration;
 
-import com.motocart.gatekeeper_microservice.dto.ProductDTO;
+import com.motocart.library.common.dto.ProductDTO;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.*;
 

@@ -8,6 +8,8 @@ spring:
     name: gatekeeper-server
   profiles:
     active: dev
+  main:
+    allow-bean-definition-overriding: true
 
 eureka:
   client:
@@ -15,6 +17,12 @@ eureka:
       defaultZone: http://localhost:8761/eureka/
     fetch-registry: true
     register-with-eureka: true
+
+# Run the custom API Gateway Auth Filter and verify JWT
+moto-cart:
+  security:
+    header-auth:
+      enabled: false
 
 logging:
   level:

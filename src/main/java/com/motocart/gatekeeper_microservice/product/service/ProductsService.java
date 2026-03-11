@@ -1,6 +1,6 @@
-package com.motocart.gatekeeper_microservice.service;
+package com.motocart.gatekeeper_microservice.product.service;
 
-import com.motocart.gatekeeper_microservice.dto.ProductDTO;
+import com.motocart.library.common.dto.ProductDTO;
 
 import java.util.List;
 

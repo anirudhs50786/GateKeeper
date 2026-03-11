@@ -1,4 +1,4 @@
-package com.motocart.gatekeeper_microservice.integration;
+package com.motocart.gatekeeper_microservice.product.integration;
 
 import org.springframework.cloud.openfeign.FeignClient;
 

@@ -1,4 +1,4 @@
-package com.motocart.gatekeeper_microservice.api;
+package com.motocart.gatekeeper_microservice.product.api;
 
 import org.springframework.http.ResponseEntity;
 

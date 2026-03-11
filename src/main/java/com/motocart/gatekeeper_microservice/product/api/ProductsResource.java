@@ -1,6 +1,6 @@
-package com.motocart.gatekeeper_microservice.api;
+package com.motocart.gatekeeper_microservice.product.api;
 
-import com.motocart.gatekeeper_microservice.dto.ProductDTO;
+import com.motocart.library.common.dto.ProductDTO;
 import org.springframework.http.ResponseEntity;
 
 import java.util.List;

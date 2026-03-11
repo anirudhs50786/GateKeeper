@@ -1,8 +1,8 @@
-package com.motocart.gatekeeper_microservice.service.impl;
+package com.motocart.gatekeeper_microservice.product.service.impl;
 
-import com.motocart.gatekeeper_microservice.dto.ProductDTO;
-import com.motocart.gatekeeper_microservice.integration.ProductsServiceClient;
-import com.motocart.gatekeeper_microservice.service.ProductsService;
+import com.motocart.gatekeeper_microservice.product.integration.ProductsServiceClient;
+import com.motocart.gatekeeper_microservice.product.service.ProductsService;
+import com.motocart.library.common.dto.ProductDTO;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;

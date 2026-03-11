@@ -1,6 +1,6 @@
-package com.motocart.gatekeeper_microservice.service.impl;
+package com.motocart.gatekeeper_microservice.product.service.impl;
 
-import com.motocart.gatekeeper_microservice.service.CategoriesService;
+import com.motocart.gatekeeper_microservice.product.service.CategoriesService;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;

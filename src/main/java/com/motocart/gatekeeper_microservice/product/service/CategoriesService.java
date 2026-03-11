@@ -1,4 +1,4 @@
-package com.motocart.gatekeeper_microservice.service;
+package com.motocart.gatekeeper_microservice.product.service;
 
 import java.util.List;
 

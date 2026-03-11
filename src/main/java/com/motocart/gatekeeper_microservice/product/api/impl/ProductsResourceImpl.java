@@ -1,8 +1,8 @@
-package com.motocart.gatekeeper_microservice.api.impl;
+package com.motocart.gatekeeper_microservice.product.api.impl;
 
-import com.motocart.gatekeeper_microservice.api.ProductsResource;
-import com.motocart.gatekeeper_microservice.dto.ProductDTO;
-import com.motocart.gatekeeper_microservice.service.ProductsService;
+import com.motocart.gatekeeper_microservice.product.api.ProductsResource;
+import com.motocart.gatekeeper_microservice.product.service.ProductsService;
+import com.motocart.library.common.dto.ProductDTO;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;

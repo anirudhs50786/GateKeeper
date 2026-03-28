@@ -3,6 +3,7 @@ package com.motocart.gatekeeper_microservice.product.api.impl;
 import com.motocart.gatekeeper_microservice.product.api.ProductsResource;
 import com.motocart.gatekeeper_microservice.product.service.ProductsService;
 import com.motocart.library.common.dto.ProductDTO;
+import com.motocart.library.common.dto.response.APIResponse;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
@@ -11,6 +12,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,16 +37,15 @@ public class ProductsResourceImpl implements ProductsResource {
             @ApiResponse(responseCode = "500", description = "Failed to create the product")
     })
     @Override
-    public ResponseEntity<String> createProduct(@RequestBody ProductDTO product) {
+    public APIResponse<ProductDTO> createProduct(@RequestBody ProductDTO product, MultipartFile productImage) {
         if (product == null) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("No Product data supplied");
+            throw new IllegalArgumentException("No Product data supplied");
         }
         try {
-            String responseMessage = productsService.createProduct(product);
-            return ResponseEntity.status(HttpStatus.OK).body(responseMessage);
+            return productsService.createProduct(product, productImage);
         } catch (Exception exception) {
             log.error("Error while creating the product. {}", exception.getMessage());
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Product create request failed");
+            throw new RuntimeException("Failed to create the product");
         }
     }
 

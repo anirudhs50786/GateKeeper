@@ -1,12 +1,14 @@
 package com.motocart.gatekeeper_microservice.product.service;
 
 import com.motocart.library.common.dto.ProductDTO;
+import com.motocart.library.common.dto.response.APIResponse;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
 public interface ProductsService {
 
-    String createProduct(ProductDTO productDTO);
+    APIResponse<ProductDTO> createProduct(ProductDTO productDTO, MultipartFile productImage);
 
     String updateProduct(ProductDTO productDTO);
 

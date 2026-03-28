@@ -4,7 +4,6 @@ import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.io.Decoders;
 import jakarta.annotation.PostConstruct;
-import lombok.Getter;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
@@ -22,10 +21,6 @@ public class JWTValidatorService {
     private String publicKeyString;
 
     private PublicKey publicKey;
-
-    @Value("${jwt.expiration.access-token}")
-    @Getter
-    private int accessTokenExpiration;
 
     @PostConstruct
     private void init() {

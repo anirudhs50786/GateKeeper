@@ -1,7 +1,7 @@
-package com.motocart.gatekeeper_microservice.config;
+package com.motocart.gatekeeper_microservice.interceptor;
 
+import com.motocart.library.common.types.HttpConstants;
 import com.motocart.library.security.Principal;
-import com.motocart.library.security.SecurityConstants;
 import feign.RequestInterceptor;
 import feign.RequestTemplate;
 import org.springframework.security.core.Authentication;
@@ -27,9 +27,9 @@ public class FeignClientInterceptor implements RequestInterceptor {
                     .map(GrantedAuthority::getAuthority)
                     .collect(Collectors.joining(","));
 
-            template.header(SecurityConstants.USER_ID_HEADER, userId);
-            template.header(SecurityConstants.USER_ROLES_HEADER, roles);
-            template.header(SecurityConstants.USERNAME_HEADER, userName);
+            template.header(HttpConstants.USER_ID_HEADER, userId);
+            template.header(HttpConstants.USER_ROLES_HEADER, roles);
+            template.header(HttpConstants.USERNAME_HEADER, userName);
         }
     }
 }

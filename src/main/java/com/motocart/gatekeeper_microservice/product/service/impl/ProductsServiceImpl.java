@@ -3,7 +3,9 @@ package com.motocart.gatekeeper_microservice.product.service.impl;
 import com.motocart.gatekeeper_microservice.product.integration.ProductsServiceClient;
 import com.motocart.gatekeeper_microservice.product.service.ProductsService;
 import com.motocart.library.common.dto.ProductDTO;
+import com.motocart.library.common.dto.response.APIResponse;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,8 +20,8 @@ public class ProductsServiceImpl implements ProductsService {
     }
 
     @Override
-    public String createProduct(ProductDTO productDTO) {
-        return productsServiceClient.createProduct(productDTO);
+    public APIResponse<ProductDTO> createProduct(ProductDTO productDTO, MultipartFile productImage) {
+        return productsServiceClient.createProduct(productDTO, productImage);
     }
 
     @Override

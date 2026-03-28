@@ -37,7 +37,6 @@ repositories {
 
 dependencies {
     implementation 'com.motocart:corelibrary:0.0.1-SNAPSHOT'
-    implementation 'org.springframework.boot:spring-boot-starter-actuator'
     implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.0.3'
     implementation 'org.springframework.cloud:spring-cloud-starter-openfeign'
     implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'

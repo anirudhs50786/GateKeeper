@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
 
-@FeignClient(name = "ciaas-server", path = "/closedcart/api/auth")
+@FeignClient(name = "ciaas-server", path = "/closedcart/auth")
 public interface AuthServiceClient {
     @PostMapping("/register")
     SignUpResponseDTO registerUser(@RequestBody SignUpRequestDTO registrationDTO);

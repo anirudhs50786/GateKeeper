@@ -1,11 +1,12 @@
 package com.motocart.gatekeeper_microservice.auth.api;
 
-import com.motocart.library.common.dto.UserProfileDTO;
+import com.motocart.library.common.dto.request.UserProfileRequestDTO;
+import com.motocart.library.common.dto.response.UserProfileResponseDTO;
 import org.springframework.http.ResponseEntity;
 
 public interface UserProfileResource {
 
-    ResponseEntity<UserProfileDTO> getUserProfile();
+    ResponseEntity<UserProfileResponseDTO> getUserProfile();
 
-    ResponseEntity<UserProfileDTO> createUserProfile(UserProfileDTO userProfileDTO);
+    ResponseEntity<UserProfileResponseDTO> createUserProfile(UserProfileRequestDTO userProfileDTO);
 }

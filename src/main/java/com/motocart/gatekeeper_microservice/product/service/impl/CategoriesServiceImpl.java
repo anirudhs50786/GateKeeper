@@ -1,41 +1,43 @@
 package com.motocart.gatekeeper_microservice.product.service.impl;
 
+import com.motocart.gatekeeper_microservice.product.integration.CategoriesServiceClient;
 import com.motocart.gatekeeper_microservice.product.service.CategoriesService;
+import com.motocart.library.common.dto.CategoriesDTO;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
 public class CategoriesServiceImpl implements CategoriesService {
 
-    @Override
-    public String createCategory(String categoryName) {
-        // TODO: Add Feign client and implement
-        return "Category created successfully";
+    private final CategoriesServiceClient categoriesServiceClient;
+
+    public CategoriesServiceImpl(CategoriesServiceClient categoriesServiceClient) {
+        this.categoriesServiceClient = categoriesServiceClient;
     }
 
     @Override
-    public String updateCategory(int categoryId, String categoryName) {
-        // TODO: Add Feign client and implement
-        return "Category updated successfully";
+    public CategoriesDTO createCategory(CategoriesDTO category) {
+        return categoriesServiceClient.createCategory(category).getBody();
+    }
+
+    @Override
+    public CategoriesDTO updateCategory(CategoriesDTO requestCategoriesDTO) {
+        return categoriesServiceClient.updateCategory(requestCategoriesDTO).getBody();
     }
 
     @Override
     public String deleteCategory(int categoryId) {
-        // TODO: Add Feign client and implement
-        return "Category deleted successfully";
+        return categoriesServiceClient.deleteCategory(categoryId).getBody();
     }
 
     @Override
-    public List<String> getCategories() {
-        // TODO: Add Feign client and implement
-        return new ArrayList<>();
+    public List<CategoriesDTO> getCategories() {
+        return categoriesServiceClient.getCategories().getBody();
     }
 
     @Override
-    public String getCategory(int categoryId) {
-        // TODO: Add Feign client and implement
-        return null;
+    public CategoriesDTO getCategory(int categoryId) {
+        return categoriesServiceClient.getCategory(categoryId).getBody();
     }
 }

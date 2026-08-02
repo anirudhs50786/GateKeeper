@@ -8,7 +8,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
-@FeignClient(name = "products-server", path = "/closedcart/api/products")
+@FeignClient(name = "products-server", path = "/closedcart/products")
 public interface ProductsServiceClient {
 
     @PostMapping

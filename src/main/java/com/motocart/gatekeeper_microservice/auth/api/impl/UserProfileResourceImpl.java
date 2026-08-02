@@ -2,7 +2,8 @@ package com.motocart.gatekeeper_microservice.auth.api.impl;
 
 import com.motocart.gatekeeper_microservice.auth.api.UserProfileResource;
 import com.motocart.gatekeeper_microservice.auth.integration.ProfileServiceClient;
-import com.motocart.library.common.dto.UserProfileDTO;
+import com.motocart.library.common.dto.request.UserProfileRequestDTO;
+import com.motocart.library.common.dto.response.UserProfileResponseDTO;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
@@ -29,7 +30,7 @@ public class UserProfileResourceImpl implements UserProfileResource {
             @ApiResponse(responseCode = "404", description = "Profile not found"),
             @ApiResponse(responseCode = "500", description = "Failed to retrieve profile")
     })
-    public ResponseEntity<UserProfileDTO> getUserProfile() {
+    public ResponseEntity<UserProfileResponseDTO> getUserProfile() {
         return ResponseEntity.ok(profileServiceClient.getUserProfile());
     }
 
@@ -40,7 +41,7 @@ public class UserProfileResourceImpl implements UserProfileResource {
             @ApiResponse(responseCode = "400", description = "Invalid profile data"),
             @ApiResponse(responseCode = "500", description = "Failed to create profile")
     })
-    public ResponseEntity<UserProfileDTO> createUserProfile(@Valid @RequestBody UserProfileDTO userProfileDTO) {
+    public ResponseEntity<UserProfileResponseDTO> createUserProfile(@Valid @RequestBody UserProfileRequestDTO userProfileDTO) {
         return ResponseEntity.ok(profileServiceClient.createUserProfile(userProfileDTO));
     }
 }

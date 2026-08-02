@@ -1,16 +1,18 @@
 package com.motocart.gatekeeper_microservice.product.service;
 
+import com.motocart.library.common.dto.CategoriesDTO;
+
 import java.util.List;
 
 public interface CategoriesService {
 
-    String createCategory(String categoryName);
+    CategoriesDTO createCategory(CategoriesDTO category);
 
-    String updateCategory(int categoryId, String categoryName);
+    CategoriesDTO updateCategory(CategoriesDTO requestCategoriesDTO);
 
     String deleteCategory(int categoryId);
 
-    List<String> getCategories();
+    List<CategoriesDTO> getCategories();
 
-    String getCategory(int categoryId);
+    CategoriesDTO getCategory(int categoryId);
 }

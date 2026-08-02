@@ -72,4 +72,8 @@ public class JWTValidatorService {
     public String extractUsername(String token) {
         return extractClaim(token, claims -> claims.get("username", String.class));
     }
+
+    public String extractEmailId(String token) {
+        return extractClaim(token, claims -> claims.get("emailId", String.class));
+    }
 }
